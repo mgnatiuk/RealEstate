@@ -28,8 +28,11 @@ namespace RealEstate.API
 
             ConfigurationHelper config = new ConfigurationHelper();
             Configuration.Bind(nameof(ConfigurationHelper), config);
-
+ 
             services.AddScoped<RealEstateSeeder>();
+
+            services.AddControllers().AddNewtonsoftJson(x =>
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>)); // !!!
             services.AddScoped<IEstateRepository, EstateRepository>();

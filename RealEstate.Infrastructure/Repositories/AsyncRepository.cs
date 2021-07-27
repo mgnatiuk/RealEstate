@@ -19,7 +19,7 @@ namespace RealEstate.Infrastructure.Repositories
             Context = context;
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(Guid id)
         {
             return await Context.Set<T>().FindAsync(id);
         }
@@ -65,6 +65,18 @@ namespace RealEstate.Infrastructure.Repositories
         public Task<int> CountWhere(Expression<Func<T, bool>> predicate)
         {
             return Context.Set<T>().CountAsync(predicate);
+        }
+
+        public async Task<IEnumerable<T>> GetAllWithIncludes(List<string> includes)
+        {
+            var query = Context.Set<T>().AsQueryable();
+
+            foreach (string include in includes)
+            {
+                query = query.Include(include);
+            }
+ 
+            return await query.AsNoTracking().ToListAsync();
         }
     }
 }

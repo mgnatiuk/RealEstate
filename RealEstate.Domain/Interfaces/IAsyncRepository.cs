@@ -8,7 +8,7 @@ namespace RealEstate.Domain.Interfaces
 {
     public interface IAsyncRepository<T> where T : BaseEntity
     {
-        Task<T> GetById(int id);
+        Task<T> GetById(Guid id);
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
         Task Add(T entity);
@@ -16,6 +16,7 @@ namespace RealEstate.Domain.Interfaces
         Task Remove(T entity);
 
         Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetAllWithIncludes(List<string> includes);
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
 
         Task<int> CountAll();
