@@ -13,7 +13,7 @@ namespace RealEstate.Application.Dtos.ListDtos
         public int BuildingLevel { get; private set; }
 
         [Display(Name = "avaliable from")]
-        public DateTime AvailableFrom { get; private set; }
+        public string AvailableFrom { get; private set; }
 
         [Display(Name = "year of building")]
         public int YearOfBuilding { get; private set; }

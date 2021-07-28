@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using RealEstate.Application.Dtos.ListDtos;
 using RealEstate.Application.Interfaces;
+using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;
 using RealEstate.Domain.Interfaces;
 
@@ -22,10 +23,19 @@ namespace RealEstate.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<BuildingListDto>> GetAllBuildingsWithIncludes(List<string> includes)
+        public async Task<PagedResult<BuildingListDto>> GetAllBuildingsWithIncludes(RequestQuery query, List<string> includes)
         {
             IEnumerable<Building> data = await _buildingRepository.GetAllWithIncludes(includes);
-            return _mapper.ProjectTo<BuildingListDto>(data.AsQueryable());
+
+            var dtos = _mapper.ProjectTo<BuildingListDto>(data.AsQueryable())
+                .Skip(query.PageSize * (query.PageNumber - 1))
+                .Take(query.PageSize)
+                .ToList();
+
+            var totalItemsCount = data.Count();
+
+            var result = new PagedResult<BuildingListDto>(dtos.ToList(), totalItemsCount, query.PageSize, query.PageNumber);
+            return result;
         }
     }
 }

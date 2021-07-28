@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RealEstate.Application.Dtos.ListDtos;
 using RealEstate.Application.Interfaces;
+using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;
 
 namespace RealEstate.API.Controllers
@@ -23,9 +24,9 @@ namespace RealEstate.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<BuildingListDto>> GetAllBuildings()
+        public async Task<PagedResult<BuildingListDto>> GetAllBuildings([FromQuery] RequestQuery query)
         {
-            return await _estateService.GetAllBuildingsWithIncludes(new List<string> { nameof(Building.Address) });
+            return await _estateService.GetAllBuildingsWithIncludes(query, new List<string> { nameof(Building.Address) });
         }
     }
 }

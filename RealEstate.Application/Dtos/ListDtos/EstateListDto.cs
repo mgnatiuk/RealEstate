@@ -9,9 +9,11 @@ namespace RealEstate.Application.Dtos.ListDtos
     {
         public Guid Id { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        [Display(Name = "created date")]
+        public string CreatedDate { get; set; }
 
-        public DateTime? UpdatedDate { get; set; }
+        [Display(Name = "updated date")]
+        public string UpdatedDate { get; set; }
 
         [Display(Name = "title")]
         public string Title { get; set; }
