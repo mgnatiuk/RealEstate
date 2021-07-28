@@ -17,7 +17,6 @@ namespace RealEstate.Domain.Entities
         }
  
         #region Class properties
-        [Display(Name="apartment level")]
         public int ApartmentLevel { get; private set; }
         #endregion
 

@@ -19,5 +19,12 @@ namespace RealEstate.Domain.Entities
 
         public DateTime? UpdatedDate { get; private set; }
         #endregion
+
+        #region Public methods
+        public void UpdateModificationDate()
+        {
+            UpdatedDate = DateTime.Now;
+        }
+        #endregion
     }
 }

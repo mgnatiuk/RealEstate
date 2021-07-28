@@ -75,7 +75,7 @@ namespace RealEstate.Infrastructure.Repositories
             {
                 query = query.Include(include);
             }
- 
+
             return await query.AsNoTracking().ToListAsync();
         }
     }

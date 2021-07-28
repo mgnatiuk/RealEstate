@@ -52,8 +52,5 @@ namespace RealEstate.Infrastructure.Data
 
             return estates;
         }
-
-         
-
     }
 }

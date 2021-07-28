@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RealEstate.Application.Dtos.ListDtos;
+using RealEstate.Application.Interfaces;
 using RealEstate.Domain.Entities;
 using RealEstate.Domain.Interfaces;
 
@@ -16,18 +16,18 @@ namespace RealEstate.API.Controllers
         
         private readonly ILogger<WeatherForecastController> _logger;
 
-        private readonly IEstateRepository _estateRepository;
+        private readonly IEstateService _estateService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEstateRepository estateRepository)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEstateService estateService)
         {
             _logger = logger;
-            _estateRepository = estateRepository;
+            _estateService = estateService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Estate>> Get()
+        public async Task<IEnumerable<EstateListDto>> Get()
         {
-            return await _estateRepository.GetAllWithIncludes(new List<string> { nameof(Estate.Address)});
+            return await _estateService.GetAllWithIncludes(new List<string> { nameof(Estate.Address)});
         }
     }
 }

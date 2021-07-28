@@ -19,25 +19,18 @@ namespace RealEstate.Domain.Entities
         }
 
         #region Class properties
-        [Display(Name = "street")]
         public string Street { get; private set; }
 
-        [Display(Name = "city")]
         public string City { get; private set; }
 
-        [Display(Name = "country")]
         public string CountryCode { get; private set; }
 
-        [Display(Name="postal code")]
         public string PostalCode { get; private set; }
 
-        [Display(Name="address number")]
         public string AddressNumber { get; private set; }
 
-        [Display(Name = "flat number")]
         public string FlatNumber { get; private set; }
 
-        [Display(Name="region")]
         public string Region { get; private set; }
  
         public Estate Estate { get; private set; }
@@ -55,6 +48,8 @@ namespace RealEstate.Domain.Entities
             AddressNumber = addressNumber;
             Region = region;
             FlatNumber = flatNumber;
+
+            base.UpdateModificationDate();
         }
         #endregion
     }

@@ -9,11 +9,20 @@
     <None Remove="Profiles\" />
     <None Remove="Interfaces\" />
     <None Remove="Services\" />
+    <None Remove="Dtos\ListDtos\" />
+    <None Remove="AutoMapper" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Profiles\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+    <Folder Include="Dtos\ListDtos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate.Domain\RealEstate.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 </Project>
