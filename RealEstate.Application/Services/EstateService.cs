@@ -27,7 +27,7 @@ namespace RealEstate.Application.Services
         {
             IEnumerable<Building> data = await _buildingRepository.GetAllWithIncludes(includes);
 
-            var dtos = _mapper.ProjectTo<BuildingListDto>(data.AsQueryable())
+            var dtos = _mapper.Map<List<BuildingListDto>>(data.AsQueryable())
                 .Skip(query.PageSize * (query.PageNumber - 1))
                 .Take(query.PageSize)
                 .ToList();
@@ -35,6 +35,21 @@ namespace RealEstate.Application.Services
             var totalItemsCount = data.Count();
 
             var result = new PagedResult<BuildingListDto>(dtos.ToList(), totalItemsCount, query.PageSize, query.PageNumber);
+            return result;
+        }
+
+        public async Task<PagedResult<EstateListDto>> GetAllEstatesWithIncludes(RequestQuery query, List<string> includes)
+        {
+            IEnumerable<Estate> data = await _estateRepository.GetAllWithIncludes(includes);
+
+            var dtos = _mapper.Map<List<EstateListDto>>(data.AsQueryable())
+                .Skip(query.PageSize * (query.PageNumber - 1))
+                .Take(query.PageSize)
+                .ToList();
+
+            var totalItemsCount = data.Count();
+
+            var result = new PagedResult<EstateListDto>(dtos.ToList(), totalItemsCount, query.PageSize, query.PageNumber);
             return result;
         }
     }

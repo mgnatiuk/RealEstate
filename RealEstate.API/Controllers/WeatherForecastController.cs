@@ -23,10 +23,18 @@ namespace RealEstate.API.Controllers
             _estateService = estateService;
         }
 
+        //[HttpGet]
+        //public async Task<PagedResult<BuildingListDto>> GetAllBuildings([FromQuery] RequestQuery query)
+        //{
+        //    return await _estateService.GetAllBuildingsWithIncludes(query, new List<string> { nameof(Building.Address) });
+        //}
+
+
         [HttpGet]
-        public async Task<PagedResult<BuildingListDto>> GetAllBuildings([FromQuery] RequestQuery query)
+        public async Task<PagedResult<EstateListDto>> GetAllEstates([FromQuery] RequestQuery query)
         {
-            return await _estateService.GetAllBuildingsWithIncludes(query, new List<string> { nameof(Building.Address) });
+            return await _estateService.GetAllEstatesWithIncludes(query, new List<string> { nameof(Estate.Address) });
         }
+
     }
 }

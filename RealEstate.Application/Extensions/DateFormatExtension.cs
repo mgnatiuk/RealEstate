@@ -9,7 +9,7 @@ namespace RealEstate.Application.Extensions
 
             if(date != null && date != new DateTime())
             {
-                dateOnly = date.ToString("yyyy-MM-dd");
+                dateOnly = date.ToString("yyyy/MM/dd");
             }
 
             return dateOnly;
@@ -21,7 +21,7 @@ namespace RealEstate.Application.Extensions
 
             if (date != null && date != new DateTime())
             {
-                dateWithTime = date.ToString("yyyy-MM-dd HH:mm:ss");
+                dateWithTime = date.ToString("yyyy/MM/dd HH:mm:ss");
             }
 
             return dateWithTime;

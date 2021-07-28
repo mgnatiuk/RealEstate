@@ -11,8 +11,6 @@ namespace RealEstate.Application.Profiles
     {
         public EstateProfile()
         {
-            
-
             CreateMap<Address, AddressDto>();
 
             CreateMap<BaseEntity, EstateListDto>()
@@ -26,14 +24,23 @@ namespace RealEstate.Application.Profiles
                 );
 
             CreateMap<Estate, EstateListDto>()
-                .IncludeAllDerived();
+                .Include<Building, BuildingListDto>()
+                .Include<Apartment, ApartmentListDto>()
+                .Include<PrivateHouse, PrivateHouseListDto>();
 
             CreateMap<Building, BuildingListDto>()
-                .IncludeAllDerived()
-                .ForMember(dest => dest.AvailableFrom, opt => opt.MapFrom(src => src.AvailableFrom.GetDateOnly()));
+                .Include<Apartment, ApartmentListDto>()
+                .Include<PrivateHouse, PrivateHouseListDto>()
+                .ForMember(
+                    dest => dest.AvailableFrom,
+                    opt => opt.MapFrom(src => src.AvailableFrom.GetDateOnly()
+                ));
 
-            CreateMap<Estate, BuildingListDto>()
-                .IncludeAllDerived();
+            CreateMap<Estate, BuildingListDto>();
+
+            CreateMap<Apartment, ApartmentListDto>();
+
+            CreateMap<PrivateHouse, PrivateHouseListDto>();
         }
     }
 }

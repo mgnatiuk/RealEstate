@@ -27,7 +27,5 @@ namespace RealEstate.Application.Dtos
 
         [Display(Name = "region")]
         public string Region { get; set; }
-
-        public Guid EstateId { get; set; }
     }
 }
