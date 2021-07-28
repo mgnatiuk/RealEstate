@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;
 
 namespace RealEstate.Domain.Interfaces
@@ -15,9 +16,9 @@ namespace RealEstate.Domain.Interfaces
         Task Update(T entity);
         Task Remove(T entity);
 
-        Task<IEnumerable<T>> GetAll();
-        Task<IEnumerable<T>> GetAllWithIncludes(List<string> includes);
-        Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAll(RequestPaginationQuery query);
+        Task<IEnumerable<T>> GetWhere(RequestPaginationQuery query, Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllWithIncludes(RequestPaginationQuery query, List<string> includes);
 
         Task<int> CountAll();
         Task<int> CountWhere(Expression<Func<T, bool>> predicate);

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RealEstate.Domain.Common
 {
-    public class RequestQuery
+    public class RequestPaginationQuery
     {
         public int PageNumber { get; set; }
 

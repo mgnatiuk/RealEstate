@@ -23,33 +23,27 @@ namespace RealEstate.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<PagedResult<BuildingListDto>> GetAllBuildingsWithIncludes(RequestQuery query, List<string> includes)
+        public async Task<PagedResult<BuildingListDto>> GetAllBuildingsWithIncludes(RequestPaginationQuery query, List<string> includes)
         {
-            IEnumerable<Building> data = await _buildingRepository.GetAllWithIncludes(includes);
+            IEnumerable<Building> data = await _buildingRepository.GetAllWithIncludes(query, includes);
 
-            var dtos = _mapper.Map<List<BuildingListDto>>(data.AsQueryable())
-                .Skip(query.PageSize * (query.PageNumber - 1))
-                .Take(query.PageSize)
-                .ToList();
+            var dtos = _mapper.Map<List<BuildingListDto>>(data.AsQueryable());
 
             var totalItemsCount = data.Count();
 
-            var result = new PagedResult<BuildingListDto>(dtos.ToList(), totalItemsCount, query.PageSize, query.PageNumber);
+            var result = new PagedResult<BuildingListDto>(dtos, totalItemsCount, query.PageSize, query.PageNumber);
             return result;
         }
 
-        public async Task<PagedResult<EstateListDto>> GetAllEstatesWithIncludes(RequestQuery query, List<string> includes)
+        public async Task<PagedResult<EstateListDto>> GetAllEstatesWithIncludes(RequestPaginationQuery query, List<string> includes)
         {
-            IEnumerable<Estate> data = await _estateRepository.GetAllWithIncludes(includes);
+            IEnumerable<Estate> data = await _estateRepository.GetAllWithIncludes(query, includes);
 
-            var dtos = _mapper.Map<List<EstateListDto>>(data.AsQueryable())
-                .Skip(query.PageSize * (query.PageNumber - 1))
-                .Take(query.PageSize)
-                .ToList();
+            var dtos = _mapper.Map<List<EstateListDto>>(data.AsQueryable());
 
             var totalItemsCount = data.Count();
 
-            var result = new PagedResult<EstateListDto>(dtos.ToList(), totalItemsCount, query.PageSize, query.PageNumber);
+            var result = new PagedResult<EstateListDto>(dtos, totalItemsCount, query.PageSize, query.PageNumber);
             return result;
         }
     }

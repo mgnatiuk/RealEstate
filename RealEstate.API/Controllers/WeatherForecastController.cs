@@ -31,7 +31,7 @@ namespace RealEstate.API.Controllers
 
 
         [HttpGet]
-        public async Task<PagedResult<EstateListDto>> GetAllEstates([FromQuery] RequestQuery query)
+        public async Task<PagedResult<EstateListDto>> GetAllEstates([FromQuery] RequestPaginationQuery query)
         {
             return await _estateService.GetAllEstatesWithIncludes(query, new List<string> { nameof(Estate.Address) });
         }

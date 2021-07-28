@@ -8,7 +8,7 @@ namespace RealEstate.Application.Interfaces
 {
     public interface IEstateService
     {
-        Task<PagedResult<BuildingListDto>> GetAllBuildingsWithIncludes(RequestQuery query, List<string> includes);
-        Task<PagedResult<EstateListDto>> GetAllEstatesWithIncludes(RequestQuery query, List<string> includes);
+        Task<PagedResult<BuildingListDto>> GetAllBuildingsWithIncludes(RequestPaginationQuery query, List<string> includes);
+        Task<PagedResult<EstateListDto>> GetAllEstatesWithIncludes(RequestPaginationQuery query, List<string> includes);
     }
 }

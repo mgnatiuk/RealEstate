@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;
 using RealEstate.Domain.Interfaces;
 using RealEstate.Infrastructure.Data;
@@ -47,14 +48,14 @@ namespace RealEstate.Infrastructure.Repositories
             return Context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll(RequestPaginationQuery query)
         {
-            return await Context.Set<T>().ToListAsync();
+            return await GetQueryWithPagination(query, Context.Set<T>());
         }
 
-        public async Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> GetWhere(RequestPaginationQuery query, Expression<Func<T, bool>> predicate)
         {
-            return await Context.Set<T>().Where(predicate).ToListAsync();
+            return await GetQueryWithPagination(query, Context.Set<T>().Where(predicate));
         }
 
         public Task<int> CountAll()
@@ -67,16 +68,26 @@ namespace RealEstate.Infrastructure.Repositories
             return Context.Set<T>().CountAsync(predicate);
         }
 
-        public async Task<IEnumerable<T>> GetAllWithIncludes(List<string> includes)
+        public async Task<IEnumerable<T>> GetAllWithIncludes(RequestPaginationQuery query, List<string> includes)
         {
-            var query = Context.Set<T>().AsQueryable();
+            var queryResult = Context.Set<T>().AsQueryable();
 
             foreach (string include in includes)
             {
-                query = query.Include(include);
+                queryResult = queryResult.Include(include);
             }
 
-            return await query.AsNoTracking().ToListAsync();
+            return await GetQueryWithPagination(query, queryResult);
+        }
+
+        private async Task<IEnumerable<T>> GetQueryWithPagination(RequestPaginationQuery query, IQueryable<T> queryData)
+        {
+            queryData = queryData
+                .Skip(query.PageSize * (query.PageNumber - 1))
+                .Take(query.PageSize)
+                .AsQueryable();
+
+            return await queryData.ToListAsync();
         }
     }
 }
