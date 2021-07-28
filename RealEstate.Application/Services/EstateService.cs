@@ -32,6 +32,7 @@ namespace RealEstate.Application.Services
             var dtos = _mapper.Map<List<EstateListDto>>(data.AsQueryable());
 
             var result = new PagedResult<EstateListDto>(dtos, totalItemsCount, query.PageSize, query.PageNumber);
+
             return result;
         }
     }
