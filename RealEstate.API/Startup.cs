@@ -1,17 +1,12 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RealEstate.API.Extensions;
 using RealEstate.API.Helpers;
-using RealEstate.Application.Interfaces;
-using RealEstate.Application.Services;
-using RealEstate.Domain.Interfaces;
 using RealEstate.Infrastructure.Data;
-using RealEstate.Infrastructure.Repositories;
 
 namespace RealEstate.API
 {
@@ -35,19 +30,15 @@ namespace RealEstate.API
             
             services.AddAutoMapper(Assembly.Load("RealEstate.Application"));
 
-            
-            services.AddScoped<RealEstateSeeder>();
-
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
-            services.AddScoped<IEstateRepository, EstateRepository>();
-            services.AddScoped<IEstateService, EstateService>();
-            services.AddScoped<IBuildingRepository, BuildingRepository>();
-            
+            services.AddScoped<RealEstateSeeder>();
 
-            services.AddDbContext<RealEstateDbContext>(options => options.UseNpgsql(config.ConnectionStrings.PostgreSQL,
-                        x => x.MigrationsAssembly("RealEstate.Migrations.Postgres")));
+            services.SetupRepositories();
+
+            services.SetupServices();
+
+            services.SetupDataBase(config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

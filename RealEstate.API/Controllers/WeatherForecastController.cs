@@ -11,24 +11,17 @@ namespace RealEstate.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class EstateController : ControllerBase
     {
         
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<EstateController> _logger;
         private readonly IEstateService _estateService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEstateService estateService)
+        public EstateController(ILogger<EstateController> logger, IEstateService estateService)
         {
             _logger = logger;
             _estateService = estateService;
         }
-
-        //[HttpGet]
-        //public async Task<PagedResult<BuildingListDto>> GetAllBuildings([FromQuery] RequestQuery query)
-        //{
-        //    return await _estateService.GetAllBuildingsWithIncludes(query, new List<string> { nameof(Building.Address) });
-        //}
-
 
         [HttpGet]
         public async Task<PagedResult<EstateListDto>> GetAllEstates([FromQuery] RequestPaginationQuery query)
