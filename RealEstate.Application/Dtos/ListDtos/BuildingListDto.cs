@@ -7,30 +7,30 @@ namespace RealEstate.Application.Dtos.ListDtos
     public class BuildingListDto : EstateListDto
     {
         [Display(Name = "rooms")]
-        public int Rooms { get; private set; }
+        public int Rooms { get; set; }
 
         [Display(Name = "building level")]
-        public int BuildingLevel { get; private set; }
+        public int BuildingLevel { get; set; }
 
         [Display(Name = "avaliable from")]
-        public string AvailableFrom { get; private set; }
+        public string AvailableFrom { get; set; }
 
         [Display(Name = "year of building")]
-        public int YearOfBuilding { get; private set; }
+        public int YearOfBuilding { get; set; }
 
         [Display(Name = "caution price")]
-        public double? CautionPrice { get; private set; }
+        public double? CautionPrice { get; set; }
 
         [Display(Name = "building type")]
-        public BuildingType BuildingType { get; private set; }
+        public BuildingType BuildingType { get; set; }
 
         [Display(Name = "building material")]
-        public BuildingMaterial BuildingMaterial { get; private set; }
+        public BuildingMaterial BuildingMaterial { get; set; }
 
         [Display(Name = "heating type")]
-        public HeatingType HeatingType { get; private set; }
+        public HeatingType HeatingType { get; set; }
 
         [Display(Name = "finishing type")]
-        public FinishingType FinishingType { get; private set; }
+        public FinishingType FinishingType { get; set; }
     }
 }
