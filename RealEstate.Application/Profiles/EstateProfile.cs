@@ -12,16 +12,15 @@ namespace RealEstate.Application.Profiles
         {
             CreateMap<Address, AddressDto>();
 
-            CreateMap<Estate, EstateListDto>();
+            CreateMap<Estate, EstateListDto>()
+                .IncludeAllDerived();
+
+            CreateMap<Building, BuildingListDto>()
+                .IncludeAllDerived()
+                .ForMember(dest => dest.AvailableFrom, opt => opt.MapFrom(src => src.AvailableFrom));
 
             CreateMap<Estate, BuildingListDto>()
-                .IncludeBase<Estate, EstateListDto>();
-
-            CreateMap<Estate, ApartmentListDto>()
-                .IncludeBase<Estate, BuildingListDto>();
-
-            CreateMap<Estate, PrivatHouseListDto>()
-                .IncludeBase<Estate, BuildingListDto>();
+                .IncludeAllDerived(); ;
         }
     }
 }

@@ -40,9 +40,11 @@ namespace RealEstate.API
 
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>)); // !!!
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
             services.AddScoped<IEstateRepository, EstateRepository>();
             services.AddScoped<IEstateService, EstateService>();
+            services.AddScoped<IBuildingRepository, BuildingRepository>();
+            
 
             services.AddDbContext<RealEstateDbContext>(options => options.UseNpgsql(config.ConnectionStrings.PostgreSQL,
                         x => x.MigrationsAssembly("RealEstate.Migrations.Postgres")));

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using RealEstate.Application.Dtos.ListDtos;
 using RealEstate.Application.Interfaces;
 using RealEstate.Domain.Entities;
@@ -14,18 +12,20 @@ namespace RealEstate.Application.Services
     public class EstateService : IEstateService
     {
         private readonly IEstateRepository _estateRepository;
+        private readonly IBuildingRepository _buildingRepository;
         private readonly IMapper _mapper;
 
-        public EstateService(IEstateRepository estateRepository, IMapper mapper)
+        public EstateService(IEstateRepository estateRepository, IBuildingRepository buildingRepository, IMapper mapper)
         {
+            _buildingRepository = buildingRepository;
             _estateRepository = estateRepository;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<EstateListDto>> GetAllWithIncludes(List<string> includes)
+        public async Task<IEnumerable<BuildingListDto>> GetAllBuildingsWithIncludes(List<string> includes)
         {
-            IEnumerable<Estate> data = await _estateRepository.GetAllWithIncludes(includes);
-            return _mapper.ProjectTo<EstateListDto>(data.AsQueryable<Estate>());
+            IEnumerable<Building> data = await _buildingRepository.GetAllWithIncludes(includes);
+            return _mapper.ProjectTo<BuildingListDto>(data.AsQueryable());
         }
     }
 }

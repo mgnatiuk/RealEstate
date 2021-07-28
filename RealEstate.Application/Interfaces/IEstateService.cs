@@ -7,6 +7,6 @@ namespace RealEstate.Application.Interfaces
 {
     public interface IEstateService
     {
-        Task<IEnumerable<EstateListDto>> GetAllWithIncludes(List<string> includes);
+        Task<IEnumerable<BuildingListDto>> GetAllBuildingsWithIncludes(List<string> includes);
     }
 }

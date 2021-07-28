@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using RealEstate.Application.Dtos.ListDtos;
 using RealEstate.Application.Interfaces;
 using RealEstate.Domain.Entities;
-using RealEstate.Domain.Interfaces;
 
 namespace RealEstate.API.Controllers
 {
@@ -15,7 +14,6 @@ namespace RealEstate.API.Controllers
     {
         
         private readonly ILogger<WeatherForecastController> _logger;
-
         private readonly IEstateService _estateService;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, IEstateService estateService)
@@ -25,9 +23,9 @@ namespace RealEstate.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<EstateListDto>> Get()
+        public async Task<IEnumerable<BuildingListDto>> GetAllBuildings()
         {
-            return await _estateService.GetAllWithIncludes(new List<string> { nameof(Estate.Address)});
+            return await _estateService.GetAllBuildingsWithIncludes(new List<string> { nameof(Building.Address) });
         }
     }
 }

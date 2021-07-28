@@ -5,6 +5,8 @@ namespace RealEstate.Application.Dtos
 {
     public class AddressDto
     {
+        public Guid Id { get; set; }
+
         [Display(Name="street")]
         public string Street { get; set; }
 

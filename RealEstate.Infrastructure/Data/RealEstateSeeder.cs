@@ -46,8 +46,9 @@ namespace RealEstate.Infrastructure.Data
                 new Address("Streat 2","Warsaw","PL","00-454","12","1","Mazowieckie"),OfferType.Company,AgreementType.Sale, true,"Description 2",25.2,5.5,1850000,5),
 
                 new Apartment(5,2,DateTime.Now,2016,0,BuildingMaterial.Brick, HeatingType.District, FinishingType.ForLiving, "Title 3",
-                new Address("Streat 3","Warsaw","PL","00-821","54","324","Mazowieckie"),OfferType.Company,AgreementType.Sale, true,"Description 3",320.2,5.5,650000,5)
+                new Address("Streat 3","Warsaw","PL","00-821","54","324","Mazowieckie"),OfferType.Company,AgreementType.Sale, true,"Description 3",320.2,5.5,650000,5),
 
+                new PrivateHouse(8,2,DateTime.Now,2018,0,BuildingMaterial.Brick,HeatingType.Central,FinishingType.ForFinishing,"Title 4",new Address("Streat 2","Warsaw","PL","00-454","12","1","Mazowieckie"),OfferType.Company,AgreementType.Rent,false,"Description 4",230.5,120,1400000),
             };
 
             return estates;
