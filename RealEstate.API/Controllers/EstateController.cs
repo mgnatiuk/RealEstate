@@ -13,7 +13,6 @@ namespace RealEstate.API.Controllers
     [Route("[controller]")]
     public class EstateController : ControllerBase
     {
-        
         private readonly ILogger<EstateController> _logger;
         private readonly IEstateService _estateService;
 
@@ -28,6 +27,5 @@ namespace RealEstate.API.Controllers
         {
             return await _estateService.GetAllEstatesWithIncludes(query, new List<string> { nameof(Estate.Address) });
         }
-
     }
 }
