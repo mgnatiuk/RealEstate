@@ -28,5 +28,12 @@ namespace RealEstate.API.Controllers
         {
             return await _estateService.GetAllEstatesWithIncludes(query, new List<string> { nameof(Estate.Address) });
         }
+
+        // GET: api/estate/guid
+        [HttpGet("guid")]
+        public async Task<EstateListDto> GetEstateById(string guid)
+        {
+            return await _estateService.GetByGuidWithIncludes(guid, new List<string> { nameof(Estate.Address) });
+        }
     }
 }

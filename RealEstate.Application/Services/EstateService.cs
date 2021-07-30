@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -13,12 +14,10 @@ namespace RealEstate.Application.Services
     public class EstateService : IEstateService
     {
         private readonly IEstateRepository _estateRepository;
-        private readonly IBuildingRepository _buildingRepository;
         private readonly IMapper _mapper;
 
-        public EstateService(IEstateRepository estateRepository, IBuildingRepository buildingRepository, IMapper mapper)
+        public EstateService(IEstateRepository estateRepository, IMapper mapper)
         {
-            _buildingRepository = buildingRepository;
             _estateRepository = estateRepository;
             _mapper = mapper;
         }
@@ -34,6 +33,17 @@ namespace RealEstate.Application.Services
             var result = new PagedResult<EstateListDto>(dtos, totalItemsCount, query.PageSize, query.PageNumber);
 
             return result;
+        }
+
+        public async Task<EstateListDto> GetByGuidWithIncludes(string guid, List<string> includes)
+        {
+            Guid guidObj = new Guid(guid);
+
+            Estate data = await _estateRepository.GetByIdWithIncludes(guidObj, includes);
+
+            var dto = _mapper.Map<EstateListDto>(data);
+
+            return dto;
         }
     }
 }
