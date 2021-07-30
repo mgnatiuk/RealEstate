@@ -24,14 +24,14 @@ namespace RealEstate.API.Controllers
 
         // GET: api/estate
         [HttpGet]
-        public async Task<PagedResult<EstateListDto>> GetAllEstates([FromQuery] RequestPaginationQuery query)
+        public async Task<PagedResult<EstateListDto>> Get([FromQuery] RequestPaginationQuery query)
         {
             return await _estateService.GetAllEstatesWithIncludes(query, new List<string> { nameof(Estate.Address) });
         }
 
-        // GET: api/estate/guid
+        // GET: api/estate/guid_here
         [HttpGet("guid")]
-        public async Task<EstateListDto> GetEstateById(string guid)
+        public async Task<EstateListDto> Get(string guid)
         {
             return await _estateService.GetByGuidWithIncludes(guid, new List<string> { nameof(Estate.Address) });
         }
