@@ -5,7 +5,7 @@ using RealEstate.Infrastructure.Data;
 
 namespace RealEstate.Infrastructure.Repositories
 {
-    public class ApartmentRepository : AsyncRepository<Apartment>, IApartmentRepository
+    public class ApartmentRepository : AsyncGenericRepository<Apartment>, IApartmentRepository
     {
         private readonly RealEstateDbContext _context;
 

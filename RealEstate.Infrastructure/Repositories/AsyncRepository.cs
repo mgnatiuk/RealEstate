@@ -11,11 +11,11 @@ using RealEstate.Infrastructure.Data;
 
 namespace RealEstate.Infrastructure.Repositories
 {
-    public class AsyncRepository<T> : IAsyncRepository<T> where T : BaseEntity
+    public class AsyncGenericRepository<T> : IAsyncGenericRepository<T> where T : BaseEntity
     {
         protected RealEstateDbContext Context;
 
-        public AsyncRepository(RealEstateDbContext context)
+        public AsyncGenericRepository(RealEstateDbContext context)
         {
             Context = context;
         }

@@ -9,7 +9,7 @@ namespace RealEstate.API.Extensions
     {
         public static void SetupRepositories(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(AsyncRepository<>));
+            services.AddScoped(typeof(IAsyncGenericRepository<>), typeof(AsyncGenericRepository<>));
             services.AddScoped<IEstateRepository, EstateRepository>();
             services.AddScoped<IBuildingRepository, BuildingRepository>();
             services.AddScoped<IApartmentRepository, ApartmentRepository>();

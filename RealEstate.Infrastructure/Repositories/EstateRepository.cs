@@ -9,7 +9,7 @@ using RealEstate.Infrastructure.Data;
 namespace RealEstate.Infrastructure.Repositories
 {
     
-    public class EstateRepository : AsyncRepository<Estate>, IEstateRepository
+    public class EstateRepository : AsyncGenericRepository<Estate>, IEstateRepository
     {
         private readonly RealEstateDbContext _context;
 

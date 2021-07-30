@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Application", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Migrations.Postgres", "RealEstate.Migrations.Postgres\RealEstate.Migrations.Postgres.csproj", "{EA97CCDB-1145-4772-A3D6-AC074FBED62A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Infrastructure.Tests", "RealEstate.Infrastructure.Tests\RealEstate.Infrastructure.Tests.csproj", "{083AD8B2-68A2-4552-8785-5005794F9F16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Application.Tests", "RealEstate.Application.Tests\RealEstate.Application.Tests.csproj", "{50C44B9A-46B3-483D-A1C9-54675DD30768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.API.Tests", "RealEstate.API.Tests\RealEstate.API.Tests.csproj", "{600EF98A-8C91-4271-88A6-D761F5003B93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{EA97CCDB-1145-4772-A3D6-AC074FBED62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA97CCDB-1145-4772-A3D6-AC074FBED62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA97CCDB-1145-4772-A3D6-AC074FBED62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083AD8B2-68A2-4552-8785-5005794F9F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083AD8B2-68A2-4552-8785-5005794F9F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083AD8B2-68A2-4552-8785-5005794F9F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083AD8B2-68A2-4552-8785-5005794F9F16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C44B9A-46B3-483D-A1C9-54675DD30768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C44B9A-46B3-483D-A1C9-54675DD30768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C44B9A-46B3-483D-A1C9-54675DD30768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C44B9A-46B3-483D-A1C9-54675DD30768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{600EF98A-8C91-4271-88A6-D761F5003B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{600EF98A-8C91-4271-88A6-D761F5003B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{600EF98A-8C91-4271-88A6-D761F5003B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{600EF98A-8C91-4271-88A6-D761F5003B93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,7 @@ using RealEstate.Domain.Entities;
 
 namespace RealEstate.Domain.Interfaces
 {
-    public interface IEstateRepository : IAsyncRepository<Estate>
+    public interface IEstateRepository : IAsyncGenericRepository<Estate>
     {
         
     }
