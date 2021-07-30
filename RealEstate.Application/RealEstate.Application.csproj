@@ -15,6 +15,7 @@
     <None Remove="Validators\" />
     <None Remove="FluentValidation.AspNetCore" />
     <None Remove="Dtos\Create\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
@@ -25,6 +26,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Validators\" />
     <Folder Include="Dtos\Create\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Domain\RealEstate.Domain.csproj" />

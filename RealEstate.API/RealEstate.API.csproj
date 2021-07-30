@@ -16,11 +16,13 @@
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Controllers\" />
     <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Middlewares\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Middlewares\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj">

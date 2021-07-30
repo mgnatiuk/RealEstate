@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RealEstate.API.Extensions;
 using RealEstate.API.Helpers;
+using RealEstate.API.Middlewares;
 using RealEstate.Application.Validators;
 using RealEstate.Domain.Common;
 using RealEstate.Infrastructure.Data;
@@ -42,6 +43,8 @@ namespace RealEstate.API
             services.SetupRepositories();
 
             services.SetupServices();
+
+            services.AddScoped<ErrorHandlingMiddleware>();
 
             services.SetupDataBase(config);
 
@@ -78,12 +81,14 @@ namespace RealEstate.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Real Estate API");
             });
 
+            app.UseMiddleware<ErrorHandlingMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
-
+ 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using RealEstate.Application.Dtos.List;
+using RealEstate.Application.Exceptions;
 using RealEstate.Application.Interfaces;
 using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;
@@ -39,9 +40,12 @@ namespace RealEstate.Application.Services
         {
             Guid guidObj = new Guid(guid);
 
-            Estate data = await _estateRepository.GetByIdWithIncludes(guidObj, includes);
+            Estate estate = await _estateRepository.GetByIdWithIncludes(guidObj, includes);
 
-            var dto = _mapper.Map<EstateListDto>(data);
+            if (estate is null)
+                throw new NotFoundException(string.Format("estate does not exist with id: {0}."));
+
+            var dto = _mapper.Map<EstateListDto>(estate);
 
             return dto;
         }
