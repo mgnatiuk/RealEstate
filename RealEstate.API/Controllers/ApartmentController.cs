@@ -43,15 +43,12 @@ namespace RealEstate.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ApartmentCreateDto dto)
         {
-            if(dto != null)
-            {
-                var guid = await _apartmentService.CreateApartment(dto);
+            var guid = await _apartmentService.CreateApartment(dto);
+
+            if (dto != null || guid != null)
                 return Created($"/api/apartament/{guid}", null);
-            }
             else
-            {
                 return BadRequest();
-            }
         }
  
         //// PUT api/values/5
