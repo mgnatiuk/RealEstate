@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using RealEstate.Application.Dtos;
+using RealEstate.Application.Dtos.Create;
 using RealEstate.Application.Dtos.List;
 using RealEstate.Application.Extensions;
 using RealEstate.Domain.Entities;
@@ -41,6 +42,18 @@ namespace RealEstate.Application.Profiles
             CreateMap<Apartment, ApartmentListDto>();
 
             CreateMap<PrivateHouse, PrivateHouseListDto>();
+
+            
+
+            CreateMap<ApartmentCreateDto, Apartment>()
+                .ForMember(r => r.Address,
+                    c => c.MapFrom(dto => new Address(dto.Address.Street, dto.Address.City, dto.Address.CountryCode, dto.Address.PostalCode, dto.Address.AddressNumber, dto.Address.FlatNumber, dto.Address.Region)));
+
+            CreateMap<ApartmentCreateDto, Building>();
+
+            CreateMap<ApartmentCreateDto, Estate>();
+
+            CreateMap<CreateAddressDto, Address>();
         }
     }
 }

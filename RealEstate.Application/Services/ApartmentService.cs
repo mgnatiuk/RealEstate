@@ -26,13 +26,11 @@ namespace RealEstate.Application.Services
 
         public async Task<Guid> CreateApartment(ApartmentCreateDto dto)
         {
-            Address address = new Address(dto.Address.Street, dto.Address.City, dto.Address.CountryCode, dto.Address.PostalCode, dto.Address.AddressNumber, dto.Address.FlatNumber, dto.Address.Region);
-
-            Apartment apartment = new Apartment(dto.Rooms, dto.BuildingLevel,dto.AvailableFrom, dto.YearOfBuilding, dto.CautionPrice, dto.BuildingMaterial, dto.HeatingType, dto.FinishingType, dto.Title, address, dto.OfferType, dto.AgreementType, dto.HasProvision, dto.Description, dto.Area, dto.AdditionalArea, dto.Price, dto.ApartmentLevel);
+            Apartment apartment = _mapper.Map<Apartment>(dto);
 
             await _apartmentRepository.Add(apartment);
 
-            return address.Id;
+            return apartment.Id;
         }
 
         public async Task<PagedResult<ApartmentListDto>> GetAllapartmentsWithIncludes(RequestPaginationQuery query, List<string> includes)
