@@ -1,7 +1,4 @@
-﻿using System;
-using AutoMapper;
-using RealEstate.Application.Dtos;
-using RealEstate.Application.Dtos.Create;
+﻿using AutoMapper;
 using RealEstate.Application.Dtos.List;
 using RealEstate.Application.Extensions;
 using RealEstate.Domain.Entities;

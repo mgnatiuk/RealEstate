@@ -12,6 +12,7 @@ using RealEstate.Domain.Entities;
 
 namespace RealEstate.API.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class ApartmentController : Controller
     {

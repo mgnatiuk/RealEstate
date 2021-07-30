@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RealEstate.API.Extensions;
 using RealEstate.API.Helpers;
+using RealEstate.Application.Validators;
+using RealEstate.Domain.Common;
 using RealEstate.Infrastructure.Data;
 
 namespace RealEstate.API
@@ -41,9 +45,11 @@ namespace RealEstate.API
 
             services.SetupDataBase(config);
 
-            services.AddSwaggerGen(c =>
+            services.SetupValidators();
+
+            services.AddSwaggerGen(swagger =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {
+                swagger.SwaggerDoc("v1", new OpenApiInfo {
                     Title = "Real Estate API",
                     Version = "v1",
                     Description = "API for Real Estate portal.",
