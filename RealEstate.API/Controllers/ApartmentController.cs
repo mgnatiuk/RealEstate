@@ -45,7 +45,7 @@ namespace RealEstate.API.Controllers
         {
             if(dto != null)
             {
-                var guid = _apartmentService.CreateApartment(dto);
+                var guid = await _apartmentService.CreateApartment(dto);
                 return Created($"/api/apartament/{guid}", null);
             }
             else
