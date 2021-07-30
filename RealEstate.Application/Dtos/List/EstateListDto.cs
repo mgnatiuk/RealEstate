@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using RealEstate.Domain.Entities;
 using RealEstate.Domain.Enums;
 
-namespace RealEstate.Application.Dtos.ListDtos
+namespace RealEstate.Application.Dtos.List
 {
     public class EstateListDto
     {
@@ -39,6 +39,6 @@ namespace RealEstate.Application.Dtos.ListDtos
         [Display(Name = "agreement type")]
         public AgreementType AgreementType { get; set; }
 
-        public AddressDto Address { get; set; }
+        public AddressListDto Address { get; set; }
     }
 }

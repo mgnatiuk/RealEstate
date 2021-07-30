@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using RealEstate.Application.Dtos;
-using RealEstate.Application.Dtos.ListDtos;
+using RealEstate.Application.Dtos.List;
 using RealEstate.Application.Extensions;
 using RealEstate.Domain.Entities;
 
@@ -11,7 +11,7 @@ namespace RealEstate.Application.Profiles
     {
         public EstateProfile()
         {
-            CreateMap<Address, AddressDto>();
+            CreateMap<Address, AddressListDto>();
 
             CreateMap<BaseEntity, EstateListDto>()
                 .ForMember(

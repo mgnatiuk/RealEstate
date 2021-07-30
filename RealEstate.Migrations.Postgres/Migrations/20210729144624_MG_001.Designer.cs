@@ -10,7 +10,7 @@ using RealEstate.Infrastructure.Data;
 namespace RealEstate.Migrations.Postgres.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20210727160511_MG_001")]
+    [Migration("20210729144624_MG_001")]
     partial class MG_001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

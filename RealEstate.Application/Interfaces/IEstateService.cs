@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RealEstate.Application.Dtos.ListDtos;
+using RealEstate.Application.Dtos.List;
 using RealEstate.Domain.Common;
 
 namespace RealEstate.Application.Interfaces

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RealEstate.Application.Dtos.ListDtos;
+using RealEstate.Application.Dtos.List;
 using RealEstate.Application.Interfaces;
 using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;

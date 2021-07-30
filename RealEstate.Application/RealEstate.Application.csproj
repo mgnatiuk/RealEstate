@@ -12,19 +12,25 @@
     <None Remove="Dtos\ListDtos\" />
     <None Remove="AutoMapper" />
     <None Remove="Extensions\" />
+    <None Remove="Validators\" />
+    <None Remove="FluentValidation.AspNetCore" />
+    <None Remove="Dtos\Create\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Profiles\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
-    <Folder Include="Dtos\ListDtos\" />
+    <Folder Include="Dtos\List\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Dtos\Create\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealEstate.Domain\RealEstate.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
   </ItemGroup>
 </Project>

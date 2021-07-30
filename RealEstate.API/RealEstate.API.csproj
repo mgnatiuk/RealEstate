@@ -15,6 +15,7 @@
     <None Remove="AutoMapper" />
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Controllers\" />
+    <None Remove="Swashbuckle.AspNetCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
@@ -40,5 +41,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.17" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 </Project>

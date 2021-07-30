@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Application.Dtos
+namespace RealEstate.Application.Dtos.List
 {
-    public class AddressDto
+    public class AddressListDto
     {
         public Guid Id { get; set; }
 

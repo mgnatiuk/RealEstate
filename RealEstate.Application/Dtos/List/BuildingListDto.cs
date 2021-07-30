@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using RealEstate.Domain.Enums;
 
-namespace RealEstate.Application.Dtos.ListDtos
+namespace RealEstate.Application.Dtos.List
 {
     public class BuildingListDto : EstateListDto
     {

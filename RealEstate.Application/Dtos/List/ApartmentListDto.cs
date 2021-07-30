@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RealEstate.Application.Dtos.ListDtos
+namespace RealEstate.Application.Dtos.List
 {
     public class ApartmentListDto : BuildingListDto
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using RealEstate.Application.Dtos.ListDtos;
+using RealEstate.Application.Dtos.List;
 using RealEstate.Application.Interfaces;
 using RealEstate.Domain.Common;
 using RealEstate.Domain.Entities;
