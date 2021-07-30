@@ -80,6 +80,18 @@ namespace RealEstate.Infrastructure.Repositories
             return await GetQueryWithPagination(query, queryResult);
         }
 
+        public async Task<T> GetByIdWithIncludes(Guid id, List<string> includes)
+        {
+            var queryResult = Context.Set<T>().Where(x => x.Id == id).AsQueryable();
+
+            foreach (string include in includes)
+            {
+                queryResult = queryResult.Include(include);
+            }
+
+            return await queryResult.FirstOrDefaultAsync();
+        }
+
         private async Task<IEnumerable<T>> GetQueryWithPagination(RequestPaginationQuery query, IQueryable<T> queryData)
         {
             queryData = queryData

@@ -27,7 +27,7 @@ namespace RealEstate.Application.Dtos.Create
 
         public OfferType OfferType { get; set; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
         public bool HasProvision { get; set; }
 

@@ -9,6 +9,7 @@ namespace RealEstate.API.Extensions
         public static void SetupServices(this IServiceCollection services)
         {
             services.AddScoped<IEstateService, EstateService>();
+            services.AddScoped<IApartmentService, ApartmentService>();
         }
     }
 }

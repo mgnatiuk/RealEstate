@@ -10,6 +10,7 @@ namespace RealEstate.Domain.Interfaces
     public interface IAsyncRepository<T> where T : BaseEntity
     {
         Task<T> GetById(Guid id);
+        Task<T> GetByIdWithIncludes(Guid id, List<string> includes);
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
         Task Add(T entity);

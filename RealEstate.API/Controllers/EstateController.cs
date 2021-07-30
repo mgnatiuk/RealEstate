@@ -22,6 +22,7 @@ namespace RealEstate.API.Controllers
             _estateService = estateService;
         }
 
+        // GET: api/estate
         [HttpGet]
         public async Task<PagedResult<EstateListDto>> GetAllEstates([FromQuery] RequestPaginationQuery query)
         {
